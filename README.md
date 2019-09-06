@@ -1,4 +1,4 @@
 # EmulinkerSF-Admin-Client
-Admin client/bot for manage EmulinkerSF server.
+This is updated vesion of Admin Client.
 
 ![](https://github.com/God-Weapon/EmulinkerSF-Admin-Client/blob/master/screenshot.jpg)
