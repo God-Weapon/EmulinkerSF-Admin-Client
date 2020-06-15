@@ -1,0 +1,124 @@
+[Root]
+Most Recent Package=Standard Setup Package 1
+
+
+[Package|Standard Setup Package 1|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=C:\Documents and Settings\SupraFast\Desktop\SupraKclient\Package
+
+[Package|Standard Setup Package 1|Configure DAO ISAMs]
+Applicable=Yes
+Jet 2.x=No
+
+[Package|Standard Setup Package 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package 1|Files Found]
+
+[Package|Standard Setup Package 1|Files Released]
+
+[Package|Standard Setup Package 1|Missing Dependency Information]
+
+[Package|Standard Setup Package 1|Out-of-Date Dependency Information]
+C:\WINDOWS\system32\MSInet.ocx=
+C:\WINDOWS\system32\RichTx32.ocx=
+C:\WINDOWS\system32\MSCOMCTL.OCX=
+
+[Package|Standard Setup Package 1|Files Added]
+
+[Package|Standard Setup Package 1|Files Removed]
+
+[Package|Standard Setup Package 1|Files In Project]
+C:\WINDOWS\system32\msvbvm60.dll=Yes
+C:\WINDOWS\system32\oleaut32.dll=Yes
+C:\WINDOWS\system32\olepro32.dll=Yes
+C:\WINDOWS\system32\asycfilt.dll=Yes
+C:\WINDOWS\system32\stdole2.tlb=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINDOWS\system32\MSWINSCK.OCX=Yes
+C:\WINDOWS\system32\MSCOMCTL.OCX=Yes
+C:\WINDOWS\system32\RichTx32.ocx=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\RICHED32.DLL=Yes
+C:\WINDOWS\system32\MSInet.ocx=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINDOWS\system32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\Program Files\Common Files\Microsoft Shared\DAO\DAO350.DLL=Yes
+C:\WINDOWS\system32\MSJET35.DLL=Yes
+C:\WINDOWS\system32\MSJTER35.DLL=Yes
+C:\WINDOWS\system32\MSJINT35.DLL=Yes
+C:\WINDOWS\system32\vbajet32.dll=Yes
+C:\WINDOWS\system32\expsrv.dll=Yes
+C:\WINDOWS\system32\MSRD2X35.DLL=Yes
+C:\WINDOWS\system32\MSREPL35.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=Yes
+C:\WINDOWS\system32\VB5DB.DLL=Yes
+C:\Documents and Settings\SupraFast\Desktop\SupraKclient\K-client.exe=Yes
+
+[Package|Standard Setup Package 1|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package 1|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package 1|Install Locations]
+C:\Documents and Settings\SupraFast\Desktop\K-client.exe=$(AppPath)
+C:\WINDOWS\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\oleaut32.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\olepro32.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\asycfilt.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\stdole2.tlb=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSWINSCK.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMCTL.OCX=$(WinSysPath)
+C:\WINDOWS\system32\RichTx32.ocx=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\RICHED32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSInet.ocx=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\Program Files\Common Files\Microsoft Shared\DAO\DAO350.DLL=$(MSDAOPath)
+C:\WINDOWS\system32\MSJET35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSJTER35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSJINT35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\vbajet32.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\expsrv.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSRD2X35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSREPL35.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\VB5DB.DLL=$(WinSysPath)
+C:\Documents and Settings\SupraFast\Desktop\SupraKclient\K-client.exe=$(AppPath)
+
+[Package|Standard Setup Package 1|Configure Shared Files]
+Applicable=Yes
+C:\Documents and Settings\SupraFast\Desktop\K-client.exe=No
+C:\Documents and Settings\SupraFast\Desktop\SupraKclient\K-client.exe=No
+
+[Package|Standard Setup Package 1|Distribution]
+Type=single
+Size=
+Title=Project1
+
+[Package|Standard Setup Package 1|Package]
+PackageFolder=C:\Documents and Settings\SupraFast\Desktop\SupraKclient\Package
+ProjectFolder=C:\Documents and Settings\SupraFast\Desktop\SupraKclient
+ServerSideCab=
+File1=C:\Documents and Settings\SupraFast\Desktop\SupraKclient\Package\setup.exe
+File2=C:\Documents and Settings\SupraFast\Desktop\SupraKclient\Package\Setup.Lst
+File3=C:\Documents and Settings\SupraFast\Desktop\SupraKclient\Package\K-client.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+[Package|Standard Setup Package 1|IconGroups]
+Group0=Project1
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|Standard Setup Package 1|Project1]
+Icon1=K-client.exe
+Title1=Project1
+StartIn1=$(AppPath)
+Key1=Icon1
