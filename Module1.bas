@@ -329,7 +329,7 @@ Public days As Long
 'Constants
 Public Const entryMsg As String = "HELLO0.83" & vbNullChar
 Public Const pingMsg As String = "PING" & vbNullChar
-Public Const clientVersion As String = "5.24"
+Public Const clientVersion As String = "5.30"
 Public Const emulatorPass As String = "EmulinkerSF Admin Client v" & clientVersion
 'Public Const emulatorPass As String = "Emulinker Suprclient v" & clientVersion
 
@@ -494,7 +494,7 @@ Sub gotoMessageType(slot As Byte, msgType As Byte)
     ElseIf msgType = &H4 Then
         Call serverStatus(slot)
     '0x05 - Server to Client ACK
-    ElseIf myBuff(5) = &H5 Then
+    ElseIf myBuff(5) = &H5 And Trim$(frmServerlist.txtFakePing.Text) = vbNullString Then
         Call clientToServerAck
     '0x07 - Global Chat Notification
     ElseIf msgType = &H7 Then
@@ -734,7 +734,7 @@ Sub userQuitNotification(msgSlot As Byte)
         Print #3, "-:" & Time & ": " & nick & " [Quit]"
     Close #3
     
-    If userID = myUserId Then
+    If userID = myUserId And userID <> myUserId Then
         If StrComp(LCase$(quit), "ping timeout", vbBinaryCompare) = 0 Then
             iQuit = True
             'initial
@@ -1212,7 +1212,7 @@ Sub joinGameNotification(msgSlot As Byte)
             Print #5, "***********CREATED Session - " & Time & " " & Date & "*************"
         Close #5
         Form1.txtGameChatroom.SelColor = &H800000
-        Form1.txtGameChatroom.SelText = Form1.txtGameChatroom.SelText & "******Created Session - " & Time & " " & Date & "*" & vbCrLf
+        Form1.txtGameChatroom.SelText = Form1.txtGameChatroom.SelText & "******Created Session - " & Time & " " & Date & "******" & vbCrLf
         imOwner = True
         Form1.btnKick.Visible = True
         Form1.txtKickUsers.Visible = True
@@ -1352,7 +1352,20 @@ Sub gameChatNotification(msgSlot As Byte)
     
     
     If StrComp(LCase$(nick), "server", vbBinaryCompare) = 0 Then
-        Form1.txtGameChatroom.SelColor = &H8000&
+        If InStr(1, msg, "TO:", vbTextCompare) = 0 And InStr(1, msg, "> (", vbBinaryCompare) > 0 And InStr(1, msg, "):", vbBinaryCompare) > 0 Then
+            Form1.txtGameChatroom.SelColor = &H800000
+            Form1.txtGameChatroom.SelText = Form1.txtChatroom.SelText & "-:"
+            If frmPreferences.chkTimeStamps.Value = vbChecked Then
+                Form1.txtGameChatroom.SelText = Form1.txtChatroom.SelText & Time & ": "
+            End If
+            Form1.txtGameChatroom.SelColor = &H800000
+            Form1.txtGameChatroom.SelText = Form1.txtChatroom.SelText & "[PM] "
+            Form1.txtGameChatroom.SelColor = &HFF8000
+            Form1.txtGameChatroom.SelText = Form1.txtChatroom.SelText & msg & vbCrLf
+            Form1.txtGameChatroom.SelStart = Len(Form1.txtChatroom.Text)
+            Exit Sub
+        End If
+        Form1.txtGameChatroom.SelColor = &H800000
         Form1.txtGameChatroom.SelText = Form1.txtGameChatroom.SelText & "-:"
         If frmPreferences.chkTimeStamps.Value = vbChecked Then
             Form1.txtGameChatroom.SelText = Form1.txtGameChatroom.SelText & Time & ": "
@@ -1565,6 +1578,8 @@ Sub globalChatNotification(msgSlot As Byte)
     Dim dl As Boolean
     If InStr(1, lMsg, "http://", vbBinaryCompare) > 0 Then
         dl = True
+    ElseIf InStr(1, lMsg, "https://", vbBinaryCompare) > 0 Then
+        dl = True
     ElseIf InStr(1, lMsg, "www.", vbBinaryCompare) > 0 Then
         dl = True
     ElseIf InStr(1, lMsg, "ftp://", vbBinaryCompare) > 0 Then
@@ -1575,11 +1590,11 @@ Sub globalChatNotification(msgSlot As Byte)
         'Link Control
          If dl = True And frmAdminBot.chkLinkControl.Value = vbChecked Then
             arUsers(id).linkSent = arUsers(id).linkSent + 1
-            If arUsers(id).linkCount <= CLng(frmAdminBot.txtLinksInterval.Text) And arUsers(i).linkSent > frmAdminBot.txtLinkSend.Text Then
+            If arUsers(id).linkCount <= CLng(frmAdminBot.txtLinksInterval.Text) And arUsers(id).linkSent >= frmAdminBot.txtLinkSend.Text Then
                 If frmAdminBot.chkAnnounceReg.Value = vbChecked Then
                     Call splitReg(nick & " [" & frmAdminBot.txtLinkMessage.Text & "] Limit " & frmAdminBot.txtLinkSend.Text & " links/" & frmAdminBot.txtLinksInterval.Text & "s")
                 Else
-                    Call splitAnnounce(frmAdminBot.txtBotName.Text & ": " & nick & " [" & frmAdminBot.txtLinkMessage.Text & "]] Limit 1 for every " & frmAdminBot.txtLinksInterval.Text & "s")
+                    Call splitAnnounce(frmAdminBot.txtBotName.Text & ": " & nick & " [" & frmAdminBot.txtLinkMessage.Text & "] Limit " & frmAdminBot.txtLinkSend.Text & " links for every " & frmAdminBot.txtLinksInterval.Text & "s")
                 End If
                 If frmAdminBot.chkLinkBan.Value = vbChecked Then
                     Call globalChatRequest("/ban" & arUsers(id).userID & " " & frmAdminBot.txtLinkMin.Text)
@@ -1596,9 +1611,9 @@ Sub globalChatNotification(msgSlot As Byte)
                     frmAdminBot.chkSpamSilenceKick.Value = vbChecked
                 End If
                 Call addDamage(nick, arUsers(id).ip, "Link Spamming")
+                arUsers(id).linkCount = 0
+                arUsers(id).linkSent = 0
             End If
-            arUsers(id).linkCount = 0
-            arUsers(id).linkSent = 0
         End If
         
         'Spam Control
@@ -1705,7 +1720,7 @@ Sub globalChatNotification(msgSlot As Byte)
                 allCaps = True
             End If
                    
-            If c <= CLng(frmAdminBot.txtTotalCaps.Text) Then
+            If c <= CLng(frmAdminBot.txtTotalCaps.Text - 1) Then
                 allCaps = False
             End If
     
@@ -1748,9 +1763,9 @@ Sub globalChatNotification(msgSlot As Byte)
                 For w = 0 To UBound(str)
                     If frmAdminBot.lstWord.List(i) = str(w) Then
                         If frmAdminBot.chkAnnounceReg.Value = vbChecked Then
-                            Call splitReg(nick & " [" & frmAdminBot.txtFilterMessage.Text & ": Keyword: " & frmAdminBot.lstWord.List(i) & "]")
+                            Call splitReg(nick & " [" & frmAdminBot.txtFilterMessage.Text & " Keyword: " & frmAdminBot.lstWord.List(i) & "]")
                         Else
-                            Call splitAnnounce(frmAdminBot.txtBotName.Text & ": " & nick & " [" & frmAdminBot.txtFilterMessage.Text & ": Keyword: " & frmAdminBot.lstWord.List(i) & "]")
+                            Call splitAnnounce(frmAdminBot.txtBotName.Text & ": " & nick & " [" & frmAdminBot.txtFilterMessage.Text & " Keyword: " & frmAdminBot.lstWord.List(i) & "]")
                         End If
                         If frmAdminBot.chkWordBan.Value = vbChecked Then
                             Call globalChatRequest("/ban " & arUsers(id).userID & " " & frmAdminBot.txtWordMin.Text)
@@ -2068,7 +2083,7 @@ Sub createGameNotification(msgSlot As Byte)
         End If
     Next i
  
-    If myBot.botStatus = True And frmAdminBot.chkCreateGame.Value = vbChecked And LenB(frmAdminBot.txtCreateGame.Text) <> 0 Then
+    If myBot.botStatus = True And frmAdminBot.chkCreateGame.Value = vbChecked And Trim$(frmAdminBot.txtCreateGame.Text) > vbNullString Then
         Call globalChatRequest("/announcegame " & gameID & " " & frmAdminBot.txtCreateGame.Text)
     End If
     
@@ -2140,7 +2155,14 @@ Sub createGameNotification(msgSlot As Byte)
             Else
                 Call splitAnnounce(frmAdminBot.txtBotName.Text & ": " & owner & " " & frmAdminBot.txtGameroomMessage.Text)
             End If
-            Call globalChatRequest("/ban " & arUsers(id).userID & " " & frmAdminBot.txtGameroomBan.Text)
+            If frmAdminBot.chkGameSpamBan.Value = vbChecked Then
+                Call globalChatRequest("/ban " & arUsers(id).userID & " " & frmAdminBot.txtGameroomBan.Text)
+            ElseIf frmAdminBot.chkGameSpamKick = vbChecked Then
+                Call globalChatRequest("/kick " & arUsers(id).userID)
+            Else
+                Call globalChatRequest("/ban " & arUsers(id).userID & " " & frmAdminBot.txtGameroomBan.Text)
+                frmAdminBot.chkGameSpamBan.Value = vbChecked
+            End If
             arUsers(id).gameSpamCount = 0
             arUsers(id).gameTimeout = 0
         End If
@@ -2594,7 +2616,7 @@ Sub serverInformationMessage(msgSlot As Byte)
                 Dim aPos As Long
                 'Hit List
                 If frmAdminBot.chkBanIP.Value = vbChecked And myBot.botStatus = True Then
-                        Set q = frmAdminBot.lstBanIP.FindItem(arUsers(userInfo(0)).ip, lvwText, 1, lvwWhole)
+                        Set q = frmAdminBot.lstBanIP.FindItem(userInfo(1), lvwText, 1, lvwWhole)
                         If q Is Nothing Then
                             For i = 1 To frmAdminBot.lstBanIP.ListItems.count
                                 aPos = InStr(1, frmAdminBot.lstBanIP.ListItems(i).Text, "*", vbTextCompare)
@@ -2650,7 +2672,7 @@ Sub serverInformationMessage(msgSlot As Byte)
                         End If
                         myBot.loginIP = userInfo(1)
                         myBot.loginCount = myBot.loginCount + 1
-                        If myBot.loginCount > CLng(frmAdminBot.txtLoginNum.Text) Then
+                        If myBot.loginCount >= CLng(frmAdminBot.txtLoginNum.Text) Then
                             If frmAdminBot.chkAnnounceReg.Value = vbChecked Then
                                 Call splitReg(userInfo(3) & " [" & frmAdminBot.txtLoginMessage.Text & "]")
                             Else
@@ -2680,9 +2702,9 @@ Sub serverInformationMessage(msgSlot As Byte)
                                 If count > CLng(frmAdminBot.txtLoginSameIP.Text) Then
                                 
                                     If frmAdminBot.chkAnnounceReg.Value = vbChecked Then
-                                        Call splitReg("Only " & CLng(frmAdminBot.txtLoginSameIP.Text) - 1 & " connections from the same address is allowed !!!->" & userInfo(3))
+                                        Call splitReg("Only " & CLng(frmAdminBot.txtLoginSameIP.Text) & " connections from the same address is allowed !!!->" & userInfo(3))
                                     Else
-                                        Call splitAnnounce(frmAdminBot.txtBotName.Text & ": Only " & CLng(frmAdminBot.txtLoginSameIP.Text) - 1 & " connections from the same address is allowed !!!->" & userInfo(3))
+                                        Call splitAnnounce(frmAdminBot.txtBotName.Text & ": Only " & CLng(frmAdminBot.txtLoginSameIP.Text) & " connections from the same address is allowed !!!->" & userInfo(3))
                                     End If
                                         
                                     If frmAdminBot.chkLoginBan.Value = vbChecked Then
@@ -2790,23 +2812,22 @@ Sub serverInformationMessage(msgSlot As Byte)
         'just to make sure we are still alive.
     ':ACCESS=userLevel
     ElseIf StrComp(Left$(lMsg, Len(":access=")), ":access=", vbBinaryCompare) = 0 Then
-        If Mid$(lMsg, Len(":access=") + 1, Len(msg) - Len(":access=")) = "superadmin" Or Mid$(lMsg, Len(":access=") + 1, Len(msg) - Len(":access=")) = "admin" Then
-            MDIForm1.StatusBar1.Panels(5).Text = "Access: Admin"
+        If Mid$(lMsg, Len(":access=") + 1, Len(msg) - Len(":access=")) = "superadmin" Then 'Or Mid$(lMsg, Len(":access=") + 1, Len(msg) - Len(":access=")) = "admin" Then
+            MDIForm1.StatusBar1.Panels(5).Text = "Access: SuperAdmin"
             If frmPreferences.chkStartBot.Value = vbChecked Then
                 'Start/Stop Bot
                 If myBot.botStatus = False Then Call frmAdminBot.btnONOFF_Click
             End If
             adminFeatures = True
             wasAdmin = True
+        ElseIf Mid$(lMsg, Len(":access=") + 1, Len(msg) - Len(":access=")) = "admin" Then
+            MDIForm1.StatusBar1.Panels(5).Text = "Access: Admin"
+            adminFeatures = True
+            wasAdmin = True
         Else
             MDIForm1.StatusBar1.Panels(5).Text = "Access Level: < Admin"
             adminFeatures = False
-            If wasAdmin = True Then
-                Call frmServerlist.btnExit_Click
-            Else
-                Call MsgBox("You are NOT an Admin. Application is shutting down!", vbOKOnly, "Admin Alert!")
-                Unload MDIForm1
-            End If
+            wasAdmin = False
         End If
     Else
         
@@ -2820,6 +2841,20 @@ Sub serverInformationMessage(msgSlot As Byte)
         ElseIf InStr(1, lMsg, "created game: ", vbBinaryCompare) > 0 Then
             Exit Sub
         ElseIf InStr(1, lMsg, "loaded the game: ", vbBinaryCompare) > 0 Then
+            Exit Sub
+        ElseIf InStr(1, lMsg, "has loaded ", vbBinaryCompare) > 0 Then
+            Exit Sub
+        ElseIf InStr(1, lMsg, "TO:", vbTextCompare) = 0 And InStr(1, lMsg, "> (", vbBinaryCompare) > 0 And InStr(1, lMsg, "):", vbBinaryCompare) > 0 Then
+            Form1.txtChatroom.SelColor = &H800000
+            Form1.txtChatroom.SelText = Form1.txtChatroom.SelText & "-:"
+            If frmPreferences.chkTimeStamps.Value = vbChecked Then
+                Form1.txtChatroom.SelText = Form1.txtChatroom.SelText & Time & ": "
+            End If
+            Form1.txtChatroom.SelColor = &H800000
+            Form1.txtChatroom.SelText = Form1.txtChatroom.SelText & "[PM] "
+            Form1.txtChatroom.SelColor = &HFF8000
+            Form1.txtChatroom.SelText = Form1.txtChatroom.SelText & msg & vbCrLf
+            Form1.txtChatroom.SelStart = Len(Form1.txtChatroom.Text)
             Exit Sub
         End If
         

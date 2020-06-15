@@ -44,7 +44,7 @@ Sub saveUsers(Optional bak As Boolean = False)
         Close #4
         If bak = True Then
             Call FileCopy(App.Path & "\EmulinkerSF_Logs\user.txt", App.Path & "\EmulinkerSF_Logs\user.bak")
-            frmServerlist.List1.AddItem "Backup DB Saved!:"
+            frmServerlist.List1.AddItem "Backup DB Saved!"
             frmServerlist.List1.TopIndex = frmServerlist.List1.ListCount - 1
             Exit Sub
         End If
@@ -52,7 +52,7 @@ Sub saveUsers(Optional bak As Boolean = False)
         MDIForm1.Enabled = False
         'save to file
         t = GetTickCount
-        frmServerlist.List1.AddItem Time & ": Saving Database..."
+        frmServerlist.List1.AddItem ":-" & Time & ": Saving Database..."
         frmServerlist.List1.TopIndex = frmServerlist.List1.ListCount - 1
         
         

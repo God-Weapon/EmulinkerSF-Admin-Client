@@ -33,7 +33,7 @@ Begin VB.Form frmPreferences
          Left            =   120
          MaxLength       =   2999
          TabIndex        =   16
-         Text            =   "www.Supraclient.com"
+         Text            =   "https://github.com/God-Weapon"
          Top             =   600
          Width           =   3135
       End
@@ -102,7 +102,7 @@ Begin VB.Form frmPreferences
          Left            =   120
          MaxLength       =   128
          TabIndex        =   13
-         Text            =   "www.Supraclient.com"
+         Text            =   "https://github.com/God-Weapon"
          Top             =   480
          Width           =   2655
       End

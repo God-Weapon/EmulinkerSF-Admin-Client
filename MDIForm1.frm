@@ -4,30 +4,30 @@ Begin VB.MDIForm MDIForm1
    AutoShowChildren=   0   'False
    BackColor       =   &H8000000C&
    Caption         =   "EmulinkerSF Admin Client"
-   ClientHeight    =   7230
-   ClientLeft      =   60
-   ClientTop       =   750
-   ClientWidth     =   11400
+   ClientHeight    =   10245
+   ClientLeft      =   135
+   ClientTop       =   480
+   ClientWidth     =   15060
    Icon            =   "MDIForm1.frx":0000
    LinkTopic       =   "MDIForm1"
    WindowState     =   2  'Maximized
    Begin MSComctlLib.Toolbar Toolbar1 
       Align           =   1  'Align Top
-      Height          =   1020
+      Height          =   360
       Left            =   0
       TabIndex        =   1
       Top             =   0
-      Width           =   11400
-      _ExtentX        =   20108
-      _ExtentY        =   1799
-      ButtonWidth     =   2514
+      Width           =   15060
+      _ExtentX        =   26564
+      _ExtentY        =   635
+      ButtonWidth     =   2328
       ButtonHeight    =   582
       Appearance      =   1
       Style           =   1
       TextAlignment   =   1
       _Version        =   393216
       BeginProperty Buttons {66833FE8-8583-11D1-B16A-00C0F0283628} 
-         NumButtons      =   12
+         NumButtons      =   13
          BeginProperty Button1 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             Caption         =   "Server List"
             Description     =   "View Admin Bot"
@@ -48,26 +48,30 @@ Begin VB.MDIForm MDIForm1
          EndProperty
          BeginProperty Button6 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             Enabled         =   0   'False
-            Caption         =   "Massive"
+            Caption         =   "Trivia Bot"
          EndProperty
          BeginProperty Button7 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Style           =   3
+            Enabled         =   0   'False
+            Caption         =   "Massive"
          EndProperty
          BeginProperty Button8 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Style           =   3
+         EndProperty
+         BeginProperty Button9 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             Caption         =   "DB Search"
             Description     =   "Search DB by IP"
          EndProperty
-         BeginProperty Button9 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+         BeginProperty Button10 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             Caption         =   "DB View All"
             Description     =   "Search All DB Entries"
          EndProperty
-         BeginProperty Button10 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+         BeginProperty Button11 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             Style           =   3
          EndProperty
-         BeginProperty Button11 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+         BeginProperty Button12 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             Caption         =   "Preferences"
          EndProperty
-         BeginProperty Button12 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+         BeginProperty Button13 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             Style           =   3
          EndProperty
       EndProperty
@@ -77,9 +81,9 @@ Begin VB.MDIForm MDIForm1
       Height          =   375
       Left            =   0
       TabIndex        =   0
-      Top             =   6855
-      Width           =   11400
-      _ExtentX        =   20108
+      Top             =   9870
+      Width           =   15060
+      _ExtentX        =   26564
       _ExtentY        =   661
       _Version        =   393216
       BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
@@ -158,9 +162,11 @@ Begin VB.MDIForm MDIForm1
       End
       Begin VB.Menu mnuReconnectToServer 
          Caption         =   "Reconnect"
+         Enabled         =   0   'False
       End
       Begin VB.Menu mnuLogOffServer 
          Caption         =   "Log Off"
+         Enabled         =   0   'False
       End
       Begin VB.Menu mnuBaradsfewr 
          Caption         =   "-"
@@ -173,6 +179,10 @@ Begin VB.MDIForm MDIForm1
       Caption         =   "&Administrative Tools"
       Begin VB.Menu mnuAdminBot 
          Caption         =   "Admin Bot"
+      End
+      Begin VB.Menu mnuTriviaCommands 
+         Caption         =   "Trivia Bot"
+         Enabled         =   0   'False
       End
       Begin VB.Menu mnuMassiveCommands 
          Caption         =   "Massive Commands"
@@ -215,6 +225,12 @@ Begin VB.MDIForm MDIForm1
          Caption         =   "Find User"
       End
       Begin VB.Menu mnuBarG 
+         Caption         =   "-"
+      End
+      Begin VB.Menu mnuPM 
+         Caption         =   "Private Message"
+      End
+      Begin VB.Menu mnuBarP 
          Caption         =   "-"
       End
       Begin VB.Menu mnuViewDBEntry 
@@ -340,6 +356,39 @@ Begin VB.MDIForm MDIForm1
             Caption         =   "For a very long time..."
          End
       End
+      Begin VB.Menu mnuTempModerator 
+         Caption         =   "Give Temporary Moderator Status"
+         Begin VB.Menu mnuTempModerator15 
+            Caption         =   "15 minutes"
+         End
+         Begin VB.Menu mnuTempModerator30 
+            Caption         =   "30 minutes"
+         End
+         Begin VB.Menu mnuTempModerator45 
+            Caption         =   "45 minutes"
+         End
+         Begin VB.Menu mnuBar30 
+            Caption         =   "-"
+         End
+         Begin VB.Menu mnuTempModerator60 
+            Caption         =   "1 hour"
+         End
+         Begin VB.Menu mnuTempModerator180 
+            Caption         =   "3 hours"
+         End
+         Begin VB.Menu mnuTempModerator300 
+            Caption         =   "5 hours"
+         End
+         Begin VB.Menu mnuBar31 
+            Caption         =   "-"
+         End
+         Begin VB.Menu mnuTempModerator1440 
+            Caption         =   "1 day"
+         End
+         Begin VB.Menu mnuTempModerator30000 
+            Caption         =   "For a very long time..."
+         End
+      End
       Begin VB.Menu mnuTempElevated 
          Caption         =   "Give Temporary Elevated Status"
          Begin VB.Menu mnuTempElevated15 
@@ -454,10 +503,22 @@ Begin VB.MDIForm MDIForm1
    Begin VB.Menu mnuGameRoomCommands 
       Caption         =   ""
       Visible         =   0   'False
+      Begin VB.Menu mnuGRCMutePlayer 
+         Caption         =   "Mute Player"
+         Begin VB.Menu mnuGRCMute 
+            Caption         =   "Mute"
+         End
+         Begin VB.Menu mnuGRCUnmute 
+            Caption         =   "Unmute"
+         End
+      End
+      Begin VB.Menu mnuBar26 
+         Caption         =   "-"
+      End
       Begin VB.Menu mnuGRCKick 
          Caption         =   "Kick from game"
       End
-      Begin VB.Menu mnuBar26 
+      Begin VB.Menu mnuBar27 
          Caption         =   "-"
       End
       Begin VB.Menu mnuGRCCopy 
@@ -472,6 +533,7 @@ Begin VB.MDIForm MDIForm1
    End
    Begin VB.Menu mnuDBVEdit 
       Caption         =   ""
+      Enabled         =   0   'False
       Begin VB.Menu mnuDBEdit 
          Caption         =   "Edit Database"
       End
@@ -502,6 +564,7 @@ End Sub
 
 Private Sub MDIForm_Initialize()
     dbPos = 1
+    Call Load(frmTrivia)
     Call Load(frmMassive)
     Call Load(frmAdminBot)
     Call Load(frmPreferences)
@@ -648,6 +711,7 @@ Private Sub MDIForm_Unload(Cancel As Integer)
     Unload frmRemote
     Unload frmAscii
     Unload frmPreferences
+    Unload frmTrivia
     Unload frmMassive
     Unload Form1
     Unload Me
@@ -715,15 +779,25 @@ Private Sub mnuFindUser_Click()
 End Sub
 
 Public Sub mnuLogOffServer_Click()
-    Dim i As Long
+    'Dim i As Long
+    'wasAdmin = False
     
-    If inServer = True Then
-        If inRoom = True Then Call Form1.btnGameExit_Click
-        Form1.Timer2.Enabled = False
-        Call userQuitRequest(Trim$(frmPreferences.txtQuit.Text))
-        iQuit = True
-        Call fixFramesButtons(0)
-    End If
+    'If inServer = True Then
+        'If inRoom = True Then Call Form1.btnGameExit_Click
+        'Form1.Timer2.Enabled = False
+        'Call userQuitRequest(Trim$(frmPreferences.txtQuit.Text))
+        'iQuit = True
+        'Call fixFramesButtons(0)
+    'End If
+    Call frmServerlist.btnExit_Click
+End Sub
+
+Private Sub mnuTriviaCommands_Click()
+    If inServer = False Then Exit Sub
+       
+    frmTrivia.Show
+    frmTrivia.WindowState = vbNormal
+    Call frmTrivia.ZOrder(vbBringToFront)
 End Sub
 
 Private Sub mnuMassiveCommands_Click()
@@ -746,7 +820,8 @@ Public Sub mnuReconnectToServer_Click()
     iQuit = True
     'initial
     Call userQuitRequest("Reconnecting...")
-    frmServerlist.List1.AddItem "*Ping Timeout (" & Time & ")*"
+    'frmServerlist.List1.AddItem "*Ping Timeout (" & Time & ")*"
+    frmServerlist.List1.AddItem ":-" & Time & ": Reconnecting..."
     frmServerlist.List1.TopIndex = frmServerlist.List1.ListCount - 1
     Call frmServerlist.btnExit_Click
     DoEvents
@@ -795,6 +870,15 @@ Private Sub mnuViewAll_Click()
     Call frmDBV.ZOrder(vbBringToFront)
     'frmDBV.SetFocus
 End Sub
+
+Public Sub mnuPM_Click()
+    Dim str As String
+    str = InputBox("Please enter a message:", "Private Message")
+    str = LCase$(Trim$(str))
+    If str = vbNullString Then Exit Sub
+    Call globalChatRequest("/msg " & frmUserlist.lstUserlist.SelectedItem.SubItems(3) & " " & str)
+End Sub
+
 
 Private Sub mnuBan1440_Click()
     Call globalChatRequest("/ban " & frmUserlist.lstUserlist.SelectedItem.SubItems(3) & " 1440")
@@ -879,31 +963,49 @@ End Sub
 
 
 Private Sub mnuFindGames_Click()
-    Call globalChatRequest("/findgame " & Form1.lstGamelist.SelectedItem)
+    If Form1.lstGamelist.ListItems.count > 0 Then
+        Call globalChatRequest("/findgame " & Form1.lstGamelist.SelectedItem)
+    End If
 End Sub
 
 Private Sub mnuGCCEmulator_Click()
-    Clipboard.Clear
-    Clipboard.SetText Form1.lstGamelist.SelectedItem.SubItems(1)
+    If Form1.lstGamelist.ListItems.count > 0 Then
+        Clipboard.Clear
+        Clipboard.SetText Form1.lstGamelist.SelectedItem.SubItems(1)
+    End If
 End Sub
 
 Private Sub mnuGCCGame_Click()
-    Clipboard.Clear
-    Clipboard.SetText Form1.lstGamelist.SelectedItem
+    If Form1.lstGamelist.ListItems.count > 0 Then
+        Clipboard.Clear
+        Clipboard.SetText Form1.lstGamelist.SelectedItem
+    End If
 End Sub
 
 Private Sub mnuGCCGameId_Click()
-    Clipboard.Clear
-    Clipboard.SetText Form1.lstGamelist.SelectedItem.SubItems(5)
+    If Form1.lstGamelist.ListItems.count > 0 Then
+        Clipboard.Clear
+        Clipboard.SetText Form1.lstGamelist.SelectedItem.SubItems(5)
+    End If
 End Sub
 
 Private Sub mnuGCCOwner_Click()
-    Clipboard.Clear
-    Clipboard.SetText Form1.lstGamelist.SelectedItem.SubItems(2)
+    If Form1.lstGamelist.ListItems.count > 0 Then
+        Clipboard.Clear
+        Clipboard.SetText Form1.lstGamelist.SelectedItem.SubItems(2)
+    End If
+End Sub
+
+Private Sub mnuGRCMute_Click()
+        Call gameChatRequest("/mute " & Form1.lstGameUserlist.SelectedItem.SubItems(3))
+End Sub
+
+Private Sub mnuGRCUnmute_Click()
+        Call gameChatRequest("/unmute " & Form1.lstGameUserlist.SelectedItem.SubItems(3))
 End Sub
 
 Private Sub mnuGRCKick_Click()
-    Call kickRequest(Form1.lstGameUserlist.SelectedItem.SubItems(3))
+    Call Form1.btnKick_Click 'kickRequest(Form1.lstGameUserlist.SelectedItem.SubItems(3))
 End Sub
 
 Private Sub mnuGRCNick_Click()
@@ -1052,6 +1154,46 @@ Private Sub mnuTempAdmin30000_Click()
     Call addDamage(frmUserlist.lstUserlist.SelectedItem.Text, frmUserlist.lstUserlist.SelectedItem.SubItems(2), "Manual Temp Admin [approx. 20.83 days]")
 End Sub
 
+Private Sub mnuTempModerator1440_Click()
+    Call globalChatRequest("/tempmoderator " & frmUserlist.lstUserlist.SelectedItem.SubItems(3) & " 1440")
+    Call addDamage(frmUserlist.lstUserlist.SelectedItem.Text, frmUserlist.lstUserlist.SelectedItem.SubItems(2), "Manual Temp Moderator 1 day")
+End Sub
+
+Private Sub mnuTempModerator15_Click()
+    Call globalChatRequest("/tempmoderator " & frmUserlist.lstUserlist.SelectedItem.SubItems(3) & " 15")
+    Call addDamage(frmUserlist.lstUserlist.SelectedItem.Text, frmUserlist.lstUserlist.SelectedItem.SubItems(2), "Manual Temp Moderator 15min")
+End Sub
+
+Private Sub mnuTempModerator180_Click()
+    Call globalChatRequest("/tempmoderator " & frmUserlist.lstUserlist.SelectedItem.SubItems(3) & " 180")
+    Call addDamage(frmUserlist.lstUserlist.SelectedItem.Text, frmUserlist.lstUserlist.SelectedItem.SubItems(2), "Manual Temp Moderator 180min")
+End Sub
+
+Private Sub mnuTempModerator30_Click()
+    Call globalChatRequest("/tempmoderator " & frmUserlist.lstUserlist.SelectedItem.SubItems(3) & " 30")
+    Call addDamage(frmUserlist.lstUserlist.SelectedItem.Text, frmUserlist.lstUserlist.SelectedItem.SubItems(2), "Manual Temp Moderator 30min")
+End Sub
+
+Private Sub mnuTempModerator300_Click()
+    Call globalChatRequest("/tempmoderator " & frmUserlist.lstUserlist.SelectedItem.SubItems(3) & " 300")
+    Call addDamage(frmUserlist.lstUserlist.SelectedItem.Text, frmUserlist.lstUserlist.SelectedItem.SubItems(2), "Manual Temp Moderator 5 hours")
+End Sub
+
+Private Sub mnuTempModerator45_Click()
+    Call globalChatRequest("/tempmoderator " & frmUserlist.lstUserlist.SelectedItem.SubItems(3) & " 45")
+    Call addDamage(frmUserlist.lstUserlist.SelectedItem.Text, frmUserlist.lstUserlist.SelectedItem.SubItems(2), "Manual Temp Moderator 45min")
+End Sub
+
+Private Sub mnuTempModerator60_Click()
+    Call globalChatRequest("/tempmoderator " & frmUserlist.lstUserlist.SelectedItem.SubItems(3) & " 60")
+    Call addDamage(frmUserlist.lstUserlist.SelectedItem.Text, frmUserlist.lstUserlist.SelectedItem.SubItems(2), "Manual Temp Moderator 1 hour")
+End Sub
+
+Private Sub mnuTempModerator30000_Click()
+    Call globalChatRequest("/tempmoderator " & frmUserlist.lstUserlist.SelectedItem.SubItems(3) & " 30000")
+    Call addDamage(frmUserlist.lstUserlist.SelectedItem.Text, frmUserlist.lstUserlist.SelectedItem.SubItems(2), "Manual Temp Moderator [approx. 20.83 days]")
+End Sub
+
 Private Sub mnuTempElevated1440_Click()
     Call globalChatRequest("/tempelevated " & frmUserlist.lstUserlist.SelectedItem.SubItems(3) & " 1440")
     Call addDamage(frmUserlist.lstUserlist.SelectedItem.Text, frmUserlist.lstUserlist.SelectedItem.SubItems(2), "Manual Temp Elevated 1 day")
@@ -1128,6 +1270,8 @@ Private Sub Toolbar1_ButtonClick(ByVal Button As MSComctlLib.Button)
         Call mnuPreferences_Click
     ElseIf Button = "Massive" Then
         Call mnuMassiveCommands_Click
+    ElseIf Button = "Trivia Bot" Then
+        Call mnuTriviaCommands_Click
     End If
 End Sub
 

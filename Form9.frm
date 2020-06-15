@@ -5,13 +5,13 @@ Begin VB.Form frmUserlist
    ClientHeight    =   8535
    ClientLeft      =   60
    ClientTop       =   450
-   ClientWidth     =   5355
+   ClientWidth     =   5280
    ClipControls    =   0   'False
    Icon            =   "Form9.frx":0000
    LinkTopic       =   "Form2"
    MDIChild        =   -1  'True
    ScaleHeight     =   8535
-   ScaleWidth      =   5355
+   ScaleWidth      =   5280
    Begin MSComctlLib.ListView lstUserlist 
       Height          =   8535
       Left            =   0
@@ -34,7 +34,7 @@ Begin VB.Form frmUserlist
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   0
+         Charset         =   204
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -91,7 +91,7 @@ Option Explicit
 
 
 Private Sub Form_Initialize()
-    Me.Width = 5475
+    Me.Width = 5430
     Me.Height = 9045
 End Sub
 
@@ -118,11 +118,11 @@ End Sub
 
 Private Sub lstUserlist_DblClick()
     If lstUserlist.ListItems.count > 0 Then
-        MDIForm1.mnuKick_Click
+        MDIForm1.mnuPM_Click 'MDIForm1.mnuKick_Click
     End If
 End Sub
 
-Private Sub lstUserlist_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub lstUserlist_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
     If lstUserlist.ListItems.count > 0 Then
         'creates popup menu when you click on the left mouse button
         If Button = 2 Then

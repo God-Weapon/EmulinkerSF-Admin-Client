@@ -21,6 +21,13 @@ Begin VB.Form frmServerlist
       TabIndex        =   0
       Top             =   120
       Width           =   9375
+      Begin VB.TextBox txtFakePing 
+         Height          =   315
+         Left            =   7920
+         TabIndex        =   15
+         Top             =   960
+         Width           =   1295
+      End
       Begin MSWinsockLib.Winsock Winsock1 
          Left            =   6960
          Top             =   5400
@@ -70,7 +77,7 @@ Begin VB.Form frmServerlist
          MaxLength       =   31
          TabIndex        =   4
          Top             =   960
-         Width           =   4095
+         Width           =   2535
       End
       Begin VB.TextBox txtServerIp 
          Height          =   315
@@ -106,6 +113,15 @@ Begin VB.Form frmServerlist
          _Version        =   393216
          Appearance      =   1
       End
+      Begin VB.Label Label5 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Fake Ping:"
+         Height          =   255
+         Left            =   7920
+         TabIndex        =   16
+         Top             =   720
+         Width           =   1095
+      End
       Begin VB.Label Label2 
          BackStyle       =   0  'Transparent
          Caption         =   "Notes:"
@@ -128,7 +144,6 @@ Begin VB.Form frmServerlist
          BackStyle       =   0  'Transparent
          Caption         =   "Username:"
          Height          =   255
-         Index           =   0
          Left            =   5160
          TabIndex        =   10
          Top             =   720
@@ -138,7 +153,6 @@ Begin VB.Form frmServerlist
          BackStyle       =   0  'Transparent
          Caption         =   "Connection:"
          Height          =   255
-         Index           =   0
          Left            =   7920
          TabIndex        =   9
          Top             =   120
@@ -148,7 +162,6 @@ Begin VB.Form frmServerlist
          BackStyle       =   0  'Transparent
          Caption         =   "Server IP Address:"
          Height          =   255
-         Index           =   0
          Left            =   5160
          TabIndex        =   8
          Top             =   120
@@ -167,12 +180,16 @@ Option Explicit
 Public Sub btnExit_Click()
     Dim i As Long
     btnExit.Enabled = False
+    wasAdmin = False
     
     If inServer = True Then
+        If inRoom = True Then Call Form1.btnGameExit_Click
         Form1.Timer2.Enabled = False
         Call userQuitRequest(Trim$(frmPreferences.txtQuit.Text))
         iQuit = True
         Call fixFramesButtons(0)
+        List1.AddItem "*Disconnected (" & Time & ")*"
+        List1.TopIndex = List1.ListCount - 1
     Else
         Form1.Timer2.Enabled = False
         Call fixFramesButtons(0)
@@ -186,6 +203,8 @@ Public Sub btnLogin_Click()
     Dim here As Boolean
     Dim i As Long
     Dim serverList As ListItem
+    
+    On Error Resume Next
     
     Form1.Timer2.Enabled = True
     'List1.Clear
@@ -269,7 +288,7 @@ Private Sub Form_Load()
     cmbConnectionType.AddItem "Average"
     cmbConnectionType.AddItem "Low"
     cmbConnectionType.AddItem "Bad"
-    cmbConnectionType.Text = "Good"
+    cmbConnectionType.Text = "LAN"
 
     'read from it
     Open App.Path & "\config.txt" For Input As #1
@@ -293,7 +312,7 @@ Private Sub Form_Load()
             ElseIf Right$(strBuff, Len(strBuff) - Len("connection=")) = "6" Then
                 cmbConnectionType.Text = "Bad"
             Else
-                cmbConnectionType.Text = "Good"
+                cmbConnectionType.Text = "LAN"
             End If
         ElseIf Left$(strBuff, Len("connectLoad=")) = "connectLoad=" Then
             chkLoading.Value = Right$(strBuff, Len(strBuff) - Len("connectLoad="))
@@ -369,6 +388,16 @@ Private Sub Form_Unload(Cancel As Integer)
     End If
 End Sub
 
+Private Sub txtFakePing_KeyPress(KeyAscii As Integer)
+    Dim ch As String
+    
+    Call textboxStuff(txtFakePing, KeyAscii)
+    ch = Chr$(KeyAscii)
+    If Not ((ch >= "0" And ch <= "9" Or ch = Chr(8) Or KeyAscii = 1 Or KeyAscii = 3 Or KeyAscii = 22 Or KeyAscii = 24 Or KeyAscii = 26)) Then
+        KeyAscii = 0
+    End If
+End Sub
+
 Private Sub txtServerIp_KeyPress(KeyAscii As Integer)
     Dim ch As String
     
@@ -411,7 +440,20 @@ Private Sub Winsock1_DataArrival(ByVal bytesTotal As Long)
             Open App.Path & "\EmulinkerSF_Logs\chat.txt" For Append As #3
                 Print #3, "***********New Session - " & Time & " " & Date & "*************"
             Close #3
+            Form1.txtChatroom.SelColor = &H800000
+            Form1.txtChatroom.SelText = Form1.txtChatroom.SelText & "******New Session - " & Time & " " & Date & "******" & vbCrLf
+            Form1.txtChatroom.SelStart = Len(Form1.txtChatroom.Text)
             Call userLoginInformation(frmServerlist.txtUsername.Text)
+            If Trim$(txtFakePing.Text) > vbNullString And Trim$(txtFakePing.Text) <= 1000 Then
+                Sleep (txtFakePing.Text)
+                Call clientToServerAck
+                Sleep (txtFakePing.Text)
+                Call clientToServerAck
+                Sleep (txtFakePing.Text)
+                Call clientToServerAck
+                Sleep (txtFakePing.Text)
+                Call clientToServerAck
+            End If
         ElseIf Left$(str, 3) = "TOO" Then
             frmServerlist.List1.AddItem Time & "Server is Full!"
             frmServerlist.List1.TopIndex = frmServerlist.List1.ListCount - 1
@@ -419,9 +461,9 @@ Private Sub Winsock1_DataArrival(ByVal bytesTotal As Long)
         ElseIf Left$(str, 4) = "PONG" Then
             frmServerlist.List1.AddItem Time & "PONG"
             frmServerlist.List1.TopIndex = frmServerlist.List1.ListCount - 1
-        Else
-            frmServerlist.List1.AddItem Time & "Unknown Message: " & str
-            frmServerlist.List1.TopIndex = frmServerlist.List1.ListCount - 1
+        'Else
+            'frmServerlist.List1.AddItem ":-" & Time & ": Unknown Message: " & str
+            'frmServerlist.List1.TopIndex = frmServerlist.List1.ListCount - 1
         End If
     Else
         Winsock1.GetData myBuff, vbArray + vbByte

@@ -49,9 +49,9 @@ End Sub
 
 Private Sub Form_Load()
     txtAbout.Text = "Version: EmulinkerSF Admin Client v" & clientVersion & vbCrLf
-    txtAbout.Text = txtAbout.Text & "http://www.Supraclient.com" & vbCrLf
-    txtAbout.Text = txtAbout.Text & "Compatibility: Emulinker Server 57.5+" & vbCrLf
-    txtAbout.Text = txtAbout.Text & "http://www.emulinker.org" & vbCrLf
+    txtAbout.Text = txtAbout.Text & "https://github.com/God-Weapon/EmulinkerSF-Admin-Client" & vbCrLf
+    txtAbout.Text = txtAbout.Text & "Compatibility: EmulinkerSF Server 90.0+" & vbCrLf
+    txtAbout.Text = txtAbout.Text & "https://github.com/God-Weapon/EmuLinkerSF" & vbCrLf
     txtAbout.Text = txtAbout.Text & "Protocol: Kaillera All Rights Reserved!" & vbCrLf
     txtAbout.Text = txtAbout.Text & "http://www.kaillera.com"
 End Sub

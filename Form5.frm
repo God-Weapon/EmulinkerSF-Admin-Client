@@ -18,7 +18,7 @@ Begin VB.Form frmAdminBot
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   0
+         Charset         =   204
          Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
@@ -36,15 +36,15 @@ Begin VB.Form frmAdminBot
          Left            =   120
          TabIndex        =   127
          Top             =   4440
-         Width           =   8415
+         Width           =   12135
          Begin MSComctlLib.ListView lstBanIP 
-            Height          =   2775
+            Height          =   2895
             Left            =   120
             TabIndex        =   130
             Top             =   240
-            Width           =   8175
-            _ExtentX        =   14420
-            _ExtentY        =   4895
+            Width           =   11895
+            _ExtentX        =   20981
+            _ExtentY        =   5106
             View            =   3
             LabelEdit       =   1
             Sorted          =   -1  'True
@@ -59,7 +59,7 @@ Begin VB.Form frmAdminBot
             NumItems        =   6
             BeginProperty ColumnHeader(1) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
                Text            =   "IP Address"
-               Object.Width           =   3175
+               Object.Width           =   3528
             EndProperty
             BeginProperty ColumnHeader(2) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
                SubItemIndex    =   1
@@ -69,7 +69,7 @@ Begin VB.Form frmAdminBot
             BeginProperty ColumnHeader(3) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
                SubItemIndex    =   2
                Text            =   "Punishment"
-               Object.Width           =   1764
+               Object.Width           =   2117
             EndProperty
             BeginProperty ColumnHeader(4) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
                SubItemIndex    =   3
@@ -79,7 +79,7 @@ Begin VB.Form frmAdminBot
             BeginProperty ColumnHeader(5) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
                SubItemIndex    =   4
                Text            =   "Message"
-               Object.Width           =   4410
+               Object.Width           =   9597
             EndProperty
             BeginProperty ColumnHeader(6) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
                SubItemIndex    =   5
@@ -90,31 +90,31 @@ Begin VB.Form frmAdminBot
          Begin VB.CommandButton btnBanIpAdd 
             Caption         =   "Add IP"
             Height          =   315
-            Left            =   5760
+            Left            =   9480
             TabIndex        =   129
-            Top             =   3120
+            Top             =   3240
             Width           =   1215
          End
          Begin VB.CommandButton btnBanIpRemove 
             Caption         =   "Remove IP"
             Height          =   315
-            Left            =   7080
+            Left            =   10800
             TabIndex        =   128
-            Top             =   3120
+            Top             =   3240
             Width           =   1215
          End
       End
       Begin VB.Frame fGameControl 
          Caption         =   "Game/Emulator Type Block"
          Height          =   4095
-         Left            =   6480
+         Left            =   6600
          TabIndex        =   104
          Top             =   240
-         Width           =   5775
+         Width           =   5655
          Begin VB.CommandButton btnAddGame 
             Caption         =   "Add "
             Height          =   315
-            Left            =   2880
+            Left            =   2760
             TabIndex        =   106
             Top             =   3720
             Width           =   1335
@@ -122,7 +122,7 @@ Begin VB.Form frmAdminBot
          Begin VB.CommandButton btnRemoveGame 
             Caption         =   "Remove "
             Height          =   315
-            Left            =   4320
+            Left            =   4200
             TabIndex        =   105
             Top             =   3720
             Width           =   1335
@@ -132,8 +132,8 @@ Begin VB.Form frmAdminBot
             Left            =   120
             TabIndex        =   107
             Top             =   240
-            Width           =   5535
-            _ExtentX        =   9763
+            Width           =   5415
+            _ExtentX        =   9551
             _ExtentY        =   5953
             View            =   3
             LabelEdit       =   1
@@ -149,12 +149,12 @@ Begin VB.Form frmAdminBot
             NumItems        =   3
             BeginProperty ColumnHeader(1) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
                Text            =   "Name of Game or Emulator"
-               Object.Width           =   3528
+               Object.Width           =   4481
             EndProperty
             BeginProperty ColumnHeader(2) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
                SubItemIndex    =   1
                Text            =   "Message"
-               Object.Width           =   3528
+               Object.Width           =   4481
             EndProperty
             BeginProperty ColumnHeader(3) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
                SubItemIndex    =   2
@@ -169,11 +169,11 @@ Begin VB.Form frmAdminBot
          Left            =   120
          TabIndex        =   100
          Top             =   240
-         Width           =   6255
+         Width           =   6375
          Begin VB.CommandButton btnRemoveIp 
             Caption         =   "Remove IP"
             Height          =   315
-            Left            =   4920
+            Left            =   5040
             TabIndex        =   102
             Top             =   3720
             Width           =   1215
@@ -181,7 +181,7 @@ Begin VB.Form frmAdminBot
          Begin VB.CommandButton btnAddIp 
             Caption         =   "Add IP"
             Height          =   315
-            Left            =   3600
+            Left            =   3720
             TabIndex        =   101
             Top             =   3720
             Width           =   1215
@@ -191,8 +191,8 @@ Begin VB.Form frmAdminBot
             Left            =   120
             TabIndex        =   103
             Top             =   240
-            Width           =   6015
-            _ExtentX        =   10610
+            Width           =   6135
+            _ExtentX        =   10821
             _ExtentY        =   5953
             View            =   3
             LabelEdit       =   1
@@ -218,7 +218,7 @@ Begin VB.Form frmAdminBot
             BeginProperty ColumnHeader(3) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
                SubItemIndex    =   2
                Text            =   "Punishment"
-               Object.Width           =   1764
+               Object.Width           =   1940
             EndProperty
             BeginProperty ColumnHeader(4) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
                SubItemIndex    =   3
@@ -238,7 +238,7 @@ Begin VB.Form frmAdminBot
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   0
+         Charset         =   204
          Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
@@ -319,7 +319,7 @@ Begin VB.Form frmAdminBot
             NumItems        =   4
             BeginProperty ColumnHeader(1) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
                Text            =   "IP Address"
-               Object.Width           =   2540
+               Object.Width           =   4057
             EndProperty
             BeginProperty ColumnHeader(2) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
                SubItemIndex    =   1
@@ -329,7 +329,7 @@ Begin VB.Form frmAdminBot
             BeginProperty ColumnHeader(3) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
                SubItemIndex    =   2
                Text            =   "Message"
-               Object.Width           =   7937
+               Object.Width           =   11818
             EndProperty
             BeginProperty ColumnHeader(4) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
                SubItemIndex    =   3
@@ -434,7 +434,7 @@ Begin VB.Form frmAdminBot
          End
          Begin VB.TextBox txtAnnounceInterval 
             Height          =   315
-            Left            =   3360
+            Left            =   3480
             MaxLength       =   5
             TabIndex        =   86
             Text            =   "300"
@@ -446,7 +446,7 @@ Begin VB.Form frmAdminBot
             Caption         =   "Interval (s):"
             Height          =   255
             Index           =   2
-            Left            =   10440
+            Left            =   10560
             TabIndex        =   148
             Top             =   120
             Width           =   855
@@ -476,7 +476,7 @@ Begin VB.Form frmAdminBot
             Caption         =   "Interval (s):"
             Height          =   255
             Index           =   1
-            Left            =   2520
+            Left            =   2640
             TabIndex        =   88
             Top             =   120
             Width           =   855
@@ -488,7 +488,7 @@ Begin VB.Form frmAdminBot
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   0
+         Charset         =   204
          Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
@@ -502,7 +502,7 @@ Begin VB.Form frmAdminBot
       Width           =   12375
       Begin VB.Frame Frame3 
          Caption         =   "Link Control"
-         Height          =   2655
+         Height          =   2775
          Left            =   8280
          TabIndex        =   132
          Top             =   3000
@@ -709,7 +709,7 @@ Begin VB.Form frmAdminBot
       End
       Begin VB.Frame fWordFilter 
          Caption         =   "Word Filter Control"
-         Height          =   5505
+         Height          =   5540
          Left            =   120
          TabIndex        =   72
          Top             =   240
@@ -745,7 +745,7 @@ Begin VB.Form frmAdminBot
             Height          =   435
             Left            =   2640
             TabIndex        =   78
-            Top             =   4320
+            Top             =   4200
             Width           =   1215
          End
          Begin VB.CommandButton btnRemoveWord 
@@ -753,7 +753,7 @@ Begin VB.Form frmAdminBot
             Height          =   435
             Left            =   2640
             TabIndex        =   77
-            Top             =   4920
+            Top             =   4800
             Width           =   1215
          End
          Begin VB.CheckBox chkWordKick 
@@ -810,7 +810,7 @@ Begin VB.Form frmAdminBot
       End
       Begin VB.Frame fLoginControl 
          Caption         =   "Login Control"
-         Height          =   2535
+         Height          =   2655
          Left            =   8280
          TabIndex        =   61
          Top             =   240
@@ -1259,7 +1259,7 @@ Begin VB.Form frmAdminBot
          End
          Begin VB.CheckBox chkLineWrapperBan 
             Caption         =   "Ban"
-            Height          =   255
+            Height          =   195
             Left            =   2640
             TabIndex        =   20
             Top             =   1560
@@ -1343,7 +1343,7 @@ Begin VB.Form frmAdminBot
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   0
+         Charset         =   204
          Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
@@ -1373,7 +1373,7 @@ Begin VB.Form frmAdminBot
       Begin VB.CheckBox chkBanIP 
          Caption         =   "Hit List"
          ForeColor       =   &H00000000&
-         Height          =   255
+         Height          =   495
          Left            =   6600
          TabIndex        =   131
          Top             =   7320
@@ -1464,7 +1464,7 @@ Begin VB.Form frmAdminBot
       End
       Begin VB.CheckBox chkUserNameFilter 
          Caption         =   "Username Filter"
-         Height          =   195
+         Height          =   255
          Left            =   2160
          TabIndex        =   6
          Top             =   7080
@@ -1538,7 +1538,7 @@ Begin VB.Form frmAdminBot
          BeginProperty ColumnHeader(4) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
             SubItemIndex    =   3
             Text            =   "Reason"
-            Object.Width           =   12347
+            Object.Width           =   12700
          EndProperty
          BeginProperty ColumnHeader(5) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
             SubItemIndex    =   4
@@ -1621,7 +1621,7 @@ Private Sub btnAddIp_Click()
     
     defa = "127.0.0.1"
     Do
-        str = InputBox("Please enter the IP Address you want to ban. Use * for a range.", "Disable Hosting", defa)
+        str = InputBox("Please enter the IP Address you want to ban.", "Disable Hosting", defa)
         If Trim$(str) = vbNullString Then Exit Sub
         
         sip = Split(str, ".")
@@ -1688,9 +1688,27 @@ End Sub
 Private Sub btnAddUser_Click()
     Dim str, str1, str2 As String
     Dim lst As ListItem
+    Dim sip() As String
+    Dim defa As String
+    On Error Resume Next
     
-    str = InputBox("Please enter the IP address of the user.", "Welcome Message")
-    If Trim$(str) = vbNullString Then Exit Sub
+    defa = "127.0.0.1"
+    Do
+        str = InputBox("Please enter the IP address of the user.", "Welcome Message", defa)
+        If Trim$(str) = vbNullString Then Exit Sub
+        
+        sip = Split(str, ".")
+        If UBound(sip) = 3 Then
+            If Len(sip(0)) = 2 Then
+                str = "0" & str
+            ElseIf Len(sip(0)) = 1 Then
+                str = "00" & str
+            End If
+            Exit Do
+        Else
+            defa = "Invalid IP Format! Please try again."
+        End If
+    Loop
     
     str1 = InputBox("Please enter the name of the user. NOTE: This is for your use only.", "Welcome Message")
     If Trim$(str1) = vbNullString Then Exit Sub
@@ -2778,7 +2796,7 @@ Private Sub lstDamage_ColumnClick(ByVal ColumnHeader As MSComctlLib.ColumnHeader
     Call LV_ColumnSort(lstDamage, ColumnHeader)
 End Sub
 
-Private Sub lstDamage_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub lstDamage_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
     If lstDamage.ListItems.count > 0 Then
         If Button = 2 Then PopupMenu MDIForm1.mnuDamage, vbPopupMenuCenterAlign
     End If

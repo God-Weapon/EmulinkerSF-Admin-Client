@@ -1,23 +1,23 @@
 VERSION 5.00
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
-Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "RichTx32.ocx"
+Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "RICHTX32.OCX"
 Begin VB.Form Form1 
    AutoRedraw      =   -1  'True
    Caption         =   "Chatroom"
-   ClientHeight    =   8535
+   ClientHeight    =   8415
    ClientLeft      =   1065
    ClientTop       =   2445
-   ClientWidth     =   9120
+   ClientWidth     =   9015
    Icon            =   "Form1.frx":0000
    LinkTopic       =   "Form1"
    MDIChild        =   -1  'True
    MouseIcon       =   "Form1.frx":11F6
-   ScaleHeight     =   8535
-   ScaleWidth      =   9120
+   ScaleHeight     =   8415
+   ScaleWidth      =   9015
    Begin VB.CommandButton btnWipeOut 
       Caption         =   "Wipe Out!"
       Height          =   315
-      Left            =   6840
+      Left            =   6720
       TabIndex        =   30
       Top             =   120
       Width           =   975
@@ -25,7 +25,7 @@ Begin VB.Form Form1
    Begin VB.CommandButton btnMe 
       Caption         =   "Me"
       Height          =   315
-      Left            =   7320
+      Left            =   7200
       TabIndex        =   29
       Top             =   4800
       Width           =   615
@@ -33,7 +33,7 @@ Begin VB.Form Form1
    Begin VB.CommandButton btnAnnounceAll 
       Caption         =   "Announce All"
       Height          =   315
-      Left            =   5520
+      Left            =   5400
       TabIndex        =   26
       Top             =   120
       Width           =   1215
@@ -41,7 +41,7 @@ Begin VB.Form Form1
    Begin VB.CommandButton btnAnnounce 
       Caption         =   "Announce"
       Height          =   315
-      Left            =   8040
+      Left            =   7920
       TabIndex        =   25
       Top             =   4800
       Width           =   975
@@ -49,7 +49,7 @@ Begin VB.Form Form1
    Begin VB.CommandButton btnChat 
       Caption         =   "Chat"
       Height          =   315
-      Left            =   6600
+      Left            =   6480
       TabIndex        =   24
       Top             =   4800
       Width           =   615
@@ -59,7 +59,7 @@ Begin VB.Form Form1
       Left            =   600
       TabIndex        =   23
       Top             =   4800
-      Width           =   5895
+      Width           =   5775
    End
    Begin VB.CommandButton btnToggle 
       BackColor       =   &H00C0C0FF&
@@ -84,7 +84,7 @@ Begin VB.Form Form1
    Begin VB.CommandButton btnHistory 
       Caption         =   "History View"
       Height          =   315
-      Left            =   7920
+      Left            =   7800
       TabIndex        =   21
       Top             =   120
       Width           =   1095
@@ -118,56 +118,56 @@ Begin VB.Form Form1
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   0
+         Charset         =   204
          Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   3255
+      Height          =   3135
       Left            =   120
       TabIndex        =   4
       Top             =   5160
       Visible         =   0   'False
-      Width           =   8895
+      Width           =   8775
       Begin VB.CommandButton btnGameMe 
          Caption         =   "Me"
          Height          =   315
-         Left            =   4080
+         Left            =   3840
          TabIndex        =   31
-         Top             =   2880
+         Top             =   2760
          Width           =   615
       End
       Begin VB.CommandButton btnHistory1 
          Caption         =   "History View"
          Height          =   315
-         Left            =   4800
+         Left            =   4560
          TabIndex        =   14
-         Top             =   2880
+         Top             =   2760
          Width           =   1095
       End
       Begin VB.CommandButton btnGameExit 
          Caption         =   "Leave"
          Height          =   315
-         Left            =   8160
+         Left            =   8040
          TabIndex        =   13
-         Top             =   2880
+         Top             =   2760
          Width           =   615
       End
       Begin VB.CommandButton btnKick 
          Caption         =   "Kick"
          Height          =   315
-         Left            =   7440
+         Left            =   7320
          TabIndex        =   8
-         Top             =   2880
+         Top             =   2760
          Width           =   615
       End
       Begin VB.TextBox txtKickUsers 
          Height          =   315
-         Left            =   6840
+         Left            =   6600
          TabIndex        =   7
          Text            =   "8"
-         Top             =   2880
+         Top             =   2760
          Width           =   495
       End
       Begin VB.TextBox txtGameChat 
@@ -175,25 +175,25 @@ Begin VB.Form Form1
          Left            =   120
          MaxLength       =   109
          TabIndex        =   6
-         Top             =   2880
-         Width           =   3135
+         Top             =   2760
+         Width           =   2895
       End
       Begin VB.CommandButton btnGameChat 
          Caption         =   "Chat"
          Height          =   315
-         Left            =   3360
+         Left            =   3120
          TabIndex        =   5
-         Top             =   2880
+         Top             =   2760
          Width           =   615
       End
       Begin MSComctlLib.ListView lstGameUserlist 
-         Height          =   2535
-         Left            =   6000
+         Height          =   2415
+         Left            =   5760
          TabIndex        =   9
          Top             =   240
-         Width           =   2775
-         _ExtentX        =   4895
-         _ExtentY        =   4471
+         Width           =   2895
+         _ExtentX        =   5106
+         _ExtentY        =   4260
          View            =   3
          LabelEdit       =   1
          LabelWrap       =   -1  'True
@@ -207,7 +207,7 @@ Begin VB.Form Form1
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
             Size            =   8.25
-            Charset         =   0
+            Charset         =   204
             Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
@@ -235,24 +235,23 @@ Begin VB.Form Form1
          EndProperty
       End
       Begin RichTextLib.RichTextBox txtGameChatroomD 
-         Height          =   2535
+         Height          =   2415
          Left            =   120
          TabIndex        =   10
          Top             =   240
          Visible         =   0   'False
-         Width           =   5775
-         _ExtentX        =   10186
-         _ExtentY        =   4471
+         Width           =   5535
+         _ExtentX        =   9763
+         _ExtentY        =   4260
          _Version        =   393217
          BorderStyle     =   0
-         Enabled         =   -1  'True
          ReadOnly        =   -1  'True
          ScrollBars      =   2
          TextRTF         =   $"Form1.frx":1780
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
             Size            =   8.25
-            Charset         =   0
+            Charset         =   204
             Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
@@ -260,22 +259,21 @@ Begin VB.Form Form1
          EndProperty
       End
       Begin RichTextLib.RichTextBox txtGameChatroom 
-         Height          =   2535
+         Height          =   2415
          Left            =   120
          TabIndex        =   11
          Top             =   240
-         Width           =   5775
-         _ExtentX        =   10186
-         _ExtentY        =   4471
+         Width           =   5535
+         _ExtentX        =   9763
+         _ExtentY        =   4260
          _Version        =   393217
          BorderStyle     =   0
-         Enabled         =   -1  'True
          ReadOnly        =   -1  'True
-         TextRTF         =   $"Form1.frx":1802
+         TextRTF         =   $"Form1.frx":1804
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
             Size            =   8.25
-            Charset         =   0
+            Charset         =   204
             Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
@@ -286,9 +284,9 @@ Begin VB.Form Form1
          BackStyle       =   0  'Transparent
          Caption         =   "Max Users:"
          Height          =   255
-         Left            =   6000
+         Left            =   5760
          TabIndex        =   12
-         Top             =   2880
+         Top             =   2760
          Width           =   855
       End
    End
@@ -297,17 +295,17 @@ Begin VB.Form Form1
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   0
+         Charset         =   204
          Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   3255
+      Height          =   3135
       Left            =   120
       TabIndex        =   0
       Top             =   5160
-      Width           =   8895
+      Width           =   8775
       Begin VB.CommandButton btnStealthMode 
          Caption         =   "Turn Stealth Mode ON"
          Height          =   315
@@ -322,12 +320,12 @@ Begin VB.Form Form1
          TabIndex        =   16
          Text            =   "*Chat (not game)"
          Top             =   240
-         Width           =   4095
+         Width           =   3975
       End
       Begin VB.CommandButton btnCloseGame 
          Caption         =   "Close"
          Height          =   315
-         Left            =   8040
+         Left            =   7920
          TabIndex        =   15
          Top             =   240
          Width           =   735
@@ -335,7 +333,7 @@ Begin VB.Form Form1
       Begin VB.CommandButton btnJoin 
          Caption         =   "Join"
          Height          =   315
-         Left            =   7200
+         Left            =   7080
          TabIndex        =   3
          Top             =   240
          Width           =   735
@@ -343,19 +341,19 @@ Begin VB.Form Form1
       Begin VB.CommandButton btnCreate 
          Caption         =   "Create"
          Height          =   315
-         Left            =   6360
+         Left            =   6240
          TabIndex        =   2
          Top             =   240
          Width           =   735
       End
       Begin MSComctlLib.ListView lstGamelist 
-         Height          =   2535
+         Height          =   2415
          Left            =   120
          TabIndex        =   1
          Top             =   600
-         Width           =   8655
-         _ExtentX        =   15266
-         _ExtentY        =   4471
+         Width           =   8535
+         _ExtentX        =   15055
+         _ExtentY        =   4260
          SortKey         =   3
          View            =   3
          LabelEdit       =   1
@@ -372,7 +370,7 @@ Begin VB.Form Form1
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
             Size            =   8.25
-            Charset         =   0
+            Charset         =   204
             Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
@@ -391,7 +389,7 @@ Begin VB.Form Form1
          BeginProperty ColumnHeader(3) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
             SubItemIndex    =   2
             Text            =   "Owner"
-            Object.Width           =   2999
+            Object.Width           =   2822
          EndProperty
          BeginProperty ColumnHeader(4) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
             SubItemIndex    =   3
@@ -433,20 +431,19 @@ Begin VB.Form Form1
       TabIndex        =   27
       Top             =   480
       Visible         =   0   'False
-      Width           =   8895
-      _ExtentX        =   15690
+      Width           =   8775
+      _ExtentX        =   15478
       _ExtentY        =   7435
       _Version        =   393217
       BackColor       =   16777215
       BorderStyle     =   0
-      Enabled         =   -1  'True
       ReadOnly        =   -1  'True
       ScrollBars      =   2
-      TextRTF         =   $"Form1.frx":1884
+      TextRTF         =   $"Form1.frx":1888
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   0
+         Charset         =   204
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -458,19 +455,18 @@ Begin VB.Form Form1
       Left            =   120
       TabIndex        =   28
       Top             =   480
-      Width           =   8895
-      _ExtentX        =   15690
+      Width           =   8775
+      _ExtentX        =   15478
       _ExtentY        =   7435
       _Version        =   393217
       BackColor       =   16777215
       BorderStyle     =   0
-      Enabled         =   -1  'True
       ReadOnly        =   -1  'True
-      TextRTF         =   $"Form1.frx":1906
+      TextRTF         =   $"Form1.frx":190C
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   0
+         Charset         =   204
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -509,7 +505,7 @@ End Sub
 
 Private Sub btnGameMe_Click()
     If Trim$(txtGameChat.Text) = vbNullString Then Exit Sub 'Or Trim$(txtChat.Text) = "You don't have admin status!" Then Exit Sub
-    Call splitReg("/me " & Trim$(txtGameChat.Text))
+    Call splitRegGame("/me " & Trim$(txtGameChat.Text))
     txtGameChat.Text = vbNullString
 End Sub
 
@@ -713,6 +709,7 @@ Public Sub btnJoin_Click()
     Dim w As Long
     
     If lstGamelist.ListItems.count > 0 Then
+        If myGameId = Form1.lstGamelist.SelectedItem.SubItems(5) Then Exit Sub
         
         If inRoom = True Then
             leftRoom = True
@@ -725,7 +722,7 @@ Public Sub btnJoin_Click()
         Loop
         If inRoom = True Then Exit Sub
         imOwner = False
-        Form1.btnKick.Visible = False
+        'Form1.btnKick.Visible = False
         myGame = Form1.lstGamelist.SelectedItem
         Call joinGameRequest(Form1.lstGamelist.SelectedItem.SubItems(5))
         If rSwitch = False Then Call Form1.btnToggle_Click
@@ -739,12 +736,18 @@ End Sub
 
 
 
-Private Sub btnKick_Click()
-    If lstGameUserlist.SelectedItem.SubItems(3) = myUserId Then
-        txtGameChatroom.SelColor = &HFF&
-        txtGameChatroom.SelText = txtGameChatroom.SelText & "*You can't kick yourself*" & vbCrLf
-        txtGameChatroom.SelStart = Len(txtGameChatroom.Text)
-    Else
+Public Sub btnKick_Click()
+    If myGameId = -1 Then
+        Exit Sub
+    ElseIf inRoom = False And imOwner = False Then
+        Exit Sub
+    End If
+    'If lstGameUserlist.SelectedItem.SubItems(3) = myUserId Then
+        'txtGameChatroom.SelColor = &HFF&
+        'txtGameChatroom.SelText = txtGameChatroom.SelText & "*You can't kick yourself*" & vbCrLf
+        'txtGameChatroom.SelStart = Len(txtGameChatroom.Text)
+    'Else
+    If lstGameUserlist.ListItems.count > 0 Then
         Call kickRequest(lstGameUserlist.SelectedItem.SubItems(3))
     End If
 End Sub
@@ -852,9 +855,9 @@ Private Sub lstGameUserlist_ColumnClick(ByVal ColumnHeader As MSComctlLib.Column
 End Sub
 
 Private Sub lstGameUserlist_DblClick()
-    If lstGameUserlist.ListItems.count > 0 Then
+    'If lstGameUserlist.ListItems.count > 0 Then
         Call btnKick_Click
-    End If
+    'End If
 End Sub
 
 Private Sub lstGameUserlist_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -870,7 +873,7 @@ Private Sub Form_Load()
     
     On Error Resume Next
         
-    'Call EnableAutoURLDetection
+    Call EnableAutoURLDetection
 
     fGameroom.Top = 5160
     fGameroom.Left = 120
@@ -963,7 +966,9 @@ Public Sub sessionTime()
                 If frmAdminBot.chkAnnounceReg.Value = vbChecked Then
                     Call splitReg(frmAdminBot.txtAnnounceMessage.Text)
                 Else
-                    Call splitAnnounce(frmAdminBot.txtBotName.Text & ": " & frmAdminBot.txtAnnounceMessage.Text)
+                    If Trim$(frmAdminBot.txtAnnounceMessage.Text) > vbNullString Then
+                        Call splitAnnounce(frmAdminBot.txtBotName.Text & ": " & frmAdminBot.txtAnnounceMessage.Text)
+                    End If
                 End If
             End If
             myBot.announceChatroomCount2 = myBot.announceChatroomCount2 + 1
@@ -972,7 +977,9 @@ Public Sub sessionTime()
                 If frmAdminBot.chkAnnounceReg.Value = vbChecked Then
                     Call splitReg(frmAdminBot.txtAnnounceMessage2.Text)
                 Else
-                    Call splitAnnounce(frmAdminBot.txtBotName.Text & ": " & frmAdminBot.txtAnnounceMessage2.Text)
+                    If Trim$(frmAdminBot.txtAnnounceMessage2.Text) > vbNullString Then
+                        Call splitAnnounce(frmAdminBot.txtBotName.Text & ": " & frmAdminBot.txtAnnounceMessage2.Text)
+                    End If
                 End If
             End If
             myBot.announceChatroomCount3 = myBot.announceChatroomCount3 + 1
@@ -981,7 +988,9 @@ Public Sub sessionTime()
                 If frmAdminBot.chkAnnounceReg.Value = vbChecked Then
                     Call splitReg(frmAdminBot.txtAnnounceMessage3.Text)
                 Else
-                    Call splitAnnounce(frmAdminBot.txtBotName.Text & ": " & frmAdminBot.txtAnnounceMessage3.Text)
+                    If Trim$(frmAdminBot.txtAnnounceMessage3.Text) > vbNullString Then
+                        Call splitAnnounce(frmAdminBot.txtBotName.Text & ": " & frmAdminBot.txtAnnounceMessage3.Text)
+                    End If
                 End If
             End If
         End If
@@ -993,11 +1002,13 @@ Public Sub sessionTime()
                 
                 For i = LBound(arGames) To UBound(arGames)
                     If arGames(i).opened = True Then
-                        Call globalChatRequest("/announcegame " & arGames(i).gameID & " " & frmAdminBot.txtBotName.Text & ": " & frmAdminBot.txtGameMessage.Text)
-                        w = GetTickCount
-                        Do Until GetTickCount - w >= 50
-                            DoEvents
-                        Loop
+                        If Trim$(frmAdminBot.txtGameMessage.Text) > vbNullString Then
+                            Call globalChatRequest("/announcegame " & arGames(i).gameID & " " & frmAdminBot.txtBotName.Text & ": " & frmAdminBot.txtGameMessage.Text)
+                            w = GetTickCount
+                            Do Until GetTickCount - w >= 50
+                                DoEvents
+                            Loop
+                        End If
                     End If
                 Next i
             End If
@@ -1119,13 +1130,13 @@ Private Sub txtFindUser_KeyPress(KeyAscii As Integer)
     Call textboxStuff(Form1.txtFindUser, KeyAscii)
 End Sub
 
-Private Sub txtGameChat_Change()
-    If txtGameChat.Text = vbNullString Then
-        btnGameChat.Enabled = False
-    Else
-        btnGameChat.Enabled = True
-    End If
-End Sub
+'Private Sub txtGameChat_Change()
+    'If txtGameChat.Text = vbNullString Then
+        'btnGameChat.Enabled = False
+    'Else
+        'btnGameChat.Enabled = True
+    'End If
+'End Sub
 
 Private Sub txtgameChat_KeyDown(KeyCode As Integer, Shift As Integer)
     If KeyCode = vbKeyReturn Then

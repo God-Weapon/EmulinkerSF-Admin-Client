@@ -18,6 +18,11 @@ Public dbPos As Long
 
 Public Sub weLoggedIn()
         'Chatroom
+        If wasAdmin = False Then
+            Call frmServerlist.btnExit_Click
+            Call MsgBox("You are NOT an Admin. Application is shutting down!", vbOKOnly, "Admin Alert!")
+            Unload MDIForm1
+        End If
         Form1.Caption = "Connected to: " & frmServerlist.txtServerIp.Text & " " & serverName
         frmServerlist.List1.AddItem ":-" & Time & ": Connected!"
         frmServerlist.List1.TopIndex = frmServerlist.List1.ListCount - 1
@@ -30,14 +35,17 @@ Public Sub weLoggedIn()
         frmServerlist.WindowState = vbMinimized
         Call fixFramesButtons(2)
         MDIForm1.mnuAsciiArt.Enabled = True
+        MDIForm1.mnuTriviaCommands.Enabled = True
         MDIForm1.mnuMassiveCommands.Enabled = True
         MDIForm1.mnuChatroom.Enabled = True
         MDIForm1.mnuUserList.Enabled = True
+        MDIForm1.mnuReconnectToServer.Enabled = True
+        MDIForm1.mnuLogOffServer.Enabled = True
         MDIForm1.mnuRemoteControl.Enabled = True
         MDIForm1.Toolbar1.Buttons(2).Enabled = True
         MDIForm1.Toolbar1.Buttons(3).Enabled = True
-        'MDIForm1.Toolbar1.Buttons(5).Enabled = True
         MDIForm1.Toolbar1.Buttons(6).Enabled = True
+        MDIForm1.Toolbar1.Buttons(7).Enabled = True
         If frmPreferences.chkRoomOnConnect.Value = vbChecked And frmPreferences.txtRoomOnConnect.Text <> vbNullString Then
             Call createGameRequest(frmPreferences.txtRoomOnConnect.Text)
             imOwner = True
@@ -119,11 +127,11 @@ Public Function statusCheck(statusType As Byte, b As Byte) As String
             Exit Function
         Case 2
             If b = 0 Then
-                str = "Netsync"
+                str = "Playing"
             ElseIf b = 1 Then
                 str = "Idle"
             ElseIf b = 2 Then
-                str = "Playing"
+                str = "Netsync"
             End If
             statusCheck = str
             Exit Function
@@ -220,6 +228,7 @@ Sub splitAnnounce(str As String)
     On Error Resume Next
 
     s = Split(str, " ")
+    If s(0) = "" Then Exit Sub
     For i = 0 To UBound(s)
         If w >= 102 Then
             t = GetTickCount
@@ -313,20 +322,24 @@ Sub fixFramesButtons(itemNum As Byte)
             Case 0
                 frmServerlist.Winsock1.Close
                 MDIForm1.mnuAsciiArt.Enabled = False
+                MDIForm1.mnuTriviaCommands.Enabled = False
                 MDIForm1.mnuMassiveCommands.Enabled = False
                 MDIForm1.mnuChatroom.Enabled = False
                 MDIForm1.mnuUserList.Enabled = False
+                MDIForm1.mnuReconnectToServer.Enabled = False
+                MDIForm1.mnuLogOffServer.Enabled = False
                 MDIForm1.mnuRemoteControl.Enabled = False
                 MDIForm1.Toolbar1.Buttons(2).Enabled = False
                 MDIForm1.Toolbar1.Buttons(3).Enabled = False
                 MDIForm1.Toolbar1.Buttons(6).Enabled = False
-                'MDIForm1.Toolbar1.Buttons(5).Enabled = False
+                MDIForm1.Toolbar1.Buttons(7).Enabled = False
                 frmServerlist.WindowState = vbNormal
                 frmServerlist.Top = 0
                 frmServerlist.Left = 0
                 frmAbout.Hide
                 frmAdminBot.Hide
                 .Hide
+                frmTrivia.Hide
                 frmMassive.Hide
                 frmRemote.Hide
                 frmAscii.Hide
