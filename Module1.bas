@@ -329,7 +329,7 @@ Public days As Long
 'Constants
 Public Const entryMsg As String = "HELLO0.83" & vbNullChar
 Public Const pingMsg As String = "PING" & vbNullChar
-Public Const clientVersion As String = "5.30"
+Public Const clientVersion As String = "5.31"
 Public Const emulatorPass As String = "EmulinkerSF Admin Client v" & clientVersion
 'Public Const emulatorPass As String = "Emulinker Suprclient v" & clientVersion
 
@@ -1597,7 +1597,7 @@ Sub globalChatNotification(msgSlot As Byte)
                     Call splitAnnounce(frmAdminBot.txtBotName.Text & ": " & nick & " [" & frmAdminBot.txtLinkMessage.Text & "] Limit " & frmAdminBot.txtLinkSend.Text & " links for every " & frmAdminBot.txtLinksInterval.Text & "s")
                 End If
                 If frmAdminBot.chkLinkBan.Value = vbChecked Then
-                    Call globalChatRequest("/ban" & arUsers(id).userID & " " & frmAdminBot.txtLinkMin.Text)
+                    Call globalChatRequest("/ban " & arUsers(id).userID & " " & frmAdminBot.txtLinkMin.Text)
                 ElseIf frmAdminBot.chkLinkSilenceKick = vbChecked Then
                     Call globalChatRequest("/silence " & arUsers(id).userID & " " & frmAdminBot.txtLinkMin.Text)
                     Call globalChatRequest("/kick " & arUsers(id).userID)
@@ -1631,7 +1631,7 @@ Sub globalChatNotification(msgSlot As Byte)
                     Call splitAnnounce(frmAdminBot.txtBotName.Text & ": " & nick & " [" & frmAdminBot.txtSpamMessage.Text & "]")
                 End If
                 If frmAdminBot.chkSpamBan.Value = vbChecked Then
-                    Call globalChatRequest("/ban" & arUsers(id).userID & " " & frmAdminBot.txtSpamMin.Text)
+                    Call globalChatRequest("/ban " & arUsers(id).userID & " " & frmAdminBot.txtSpamMin.Text)
                 ElseIf frmAdminBot.chkSpamSilenceKick = vbChecked Then
                     Call globalChatRequest("/silence " & arUsers(id).userID & " " & frmAdminBot.txtSpamMin.Text)
                     Call globalChatRequest("/kick " & arUsers(id).userID)
@@ -1733,7 +1733,7 @@ Sub globalChatNotification(msgSlot As Byte)
                     Call splitAnnounce(frmAdminBot.txtBotName.Text & ": " & nick & " [" & frmAdminBot.txtAllCapsMessage.Text & "]")
                 End If
                 If frmAdminBot.chkAllCapsBan.Value = vbChecked Then
-                    Call globalChatRequest("/ban" & arUsers(id).userID & " " & frmAdminBot.txtAllCapsMin.Text)
+                    Call globalChatRequest("/ban " & arUsers(id).userID & " " & frmAdminBot.txtAllCapsMin.Text)
                 ElseIf frmAdminBot.chkAllCapsSilenceKick = vbChecked Then
                     Call globalChatRequest("/silence " & arUsers(id).userID & " " & frmAdminBot.txtAllCapsMin.Text)
                     Call globalChatRequest("/kick " & arUsers(id).userID)
