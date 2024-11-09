@@ -329,7 +329,7 @@ Public days As Long
 'Constants
 Public Const entryMsg As String = "HELLO0.83" & vbNullChar
 Public Const pingMsg As String = "PING" & vbNullChar
-Public Const clientVersion As String = "5.31"
+Public Const clientVersion As String = "5.32"
 Public Const emulatorPass As String = "EmulinkerSF Admin Client v" & clientVersion
 'Public Const emulatorPass As String = "Emulinker Suprclient v" & clientVersion
 
@@ -595,6 +595,9 @@ Sub dropGameNotification(msgSlot As Byte)
 
     'nick
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
     temp(strSize) = &H0
     nick = ByteArrayToString(temp)
@@ -658,6 +661,9 @@ Sub connectionRejectedNotification(msgSlot As Byte)
     
     'nick
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
     temp(strSize) = &H0
     nick = ByteArrayToString(temp)
@@ -669,6 +675,9 @@ Sub connectionRejectedNotification(msgSlot As Byte)
     
     'message
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
     temp(strSize) = &H0
     msg = ByteArrayToString(temp)
@@ -714,6 +723,9 @@ Sub userQuitNotification(msgSlot As Byte)
     
     'nick
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
     temp(strSize) = &H0
     nick = ByteArrayToString(temp)
@@ -725,6 +737,9 @@ Sub userQuitNotification(msgSlot As Byte)
     
     'quit message
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
     temp(strSize) = &H0
     quit = ByteArrayToString(temp)
@@ -864,6 +879,9 @@ Sub quitGameNotification(msgSlot As Byte)
     Dim strSize As Long
         
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
     temp(strSize) = &H0
     nick = ByteArrayToString(temp)
@@ -952,6 +970,9 @@ Sub playerInformation(msgSlot As Byte)
         While i < UBound(serverMessages(msgSlot).msgData) And jumpOut = False
             'nick
             strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+            If strSize > 511 Then
+                strSize = 511
+            End If
             Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
             temp(strSize) = &H0
             nick = ByteArrayToString(temp)
@@ -1022,6 +1043,9 @@ Sub serverStatus(msgSlot As Byte)
     For w = 0 To numOfUsers - 1
         'nick
         strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+        If strSize > 511 Then
+            strSize = 511
+        End If
         'Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
         'temp(strSize) = &H0
         'nick = ByteArrayToString(temp)
@@ -1083,6 +1107,9 @@ Form1.lstGamelist.Visible = False
     For w = 0 To numOfGames - 1
         'game
         strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+        If strSize > 511 Then
+            strSize = 511
+        End If
         Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
         temp(strSize) = &H0
         game = ByteArrayToString(temp)
@@ -1094,6 +1121,9 @@ Form1.lstGamelist.Visible = False
             
         'emulator
         strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+        If strSize > 511 Then
+            strSize = 511
+        End If
         Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
         temp(strSize) = &H0
         emulator = ByteArrayToString(temp)
@@ -1101,6 +1131,9 @@ Form1.lstGamelist.Visible = False
             
         'for owner
         strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+        If strSize > 511 Then
+            strSize = 511
+        End If
         Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
         temp(strSize) = &H0
         owner = ByteArrayToString(temp)
@@ -1180,6 +1213,9 @@ Sub joinGameNotification(msgSlot As Byte)
     'for username
     i = 5
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
     temp(strSize) = &H0
     username = ByteArrayToString(temp)
@@ -1328,6 +1364,9 @@ Sub gameChatNotification(msgSlot As Byte)
     
     'username
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
     temp(strSize) = &H0
     nick = ByteArrayToString(temp)
@@ -1337,6 +1376,9 @@ Sub gameChatNotification(msgSlot As Byte)
     
     'user's message
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
     temp(strSize) = &H0
     msg = ByteArrayToString(temp)
@@ -1452,6 +1494,9 @@ Sub globalChatNotification(msgSlot As Byte)
     
     'username
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
     temp(strSize) = &H0
     nick = ByteArrayToString(temp)
@@ -1459,6 +1504,9 @@ Sub globalChatNotification(msgSlot As Byte)
 
     'user's message
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
     temp(strSize) = &H0
     msg = ByteArrayToString(temp)
@@ -1860,6 +1908,9 @@ Sub userJoined(msgSlot As Byte)
     
     'nick
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(0)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(0), ByVal strSize)
     temp(strSize) = &H0
     nick = ByteArrayToString(temp)
@@ -1975,6 +2026,9 @@ Sub createGameNotification(msgSlot As Byte)
     
     'for owner
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
     temp(strSize) = &H0
     owner = ByteArrayToString(temp)
@@ -1984,6 +2038,9 @@ Sub createGameNotification(msgSlot As Byte)
     
     'for game
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
     temp(strSize) = &H0
     game = ByteArrayToString(temp)
@@ -1991,6 +2048,9 @@ Sub createGameNotification(msgSlot As Byte)
     
     'for emulator
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
     temp(strSize) = &H0
     emulator = ByteArrayToString(temp)
@@ -2535,6 +2595,9 @@ Sub serverInformationMessage(msgSlot As Byte)
     
     'for server
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
     temp(strSize) = &H0
     server = ByteArrayToString(temp)
@@ -2542,6 +2605,9 @@ Sub serverInformationMessage(msgSlot As Byte)
     
     'for message
     strSize = lstrlen(VarPtr(serverMessages(msgSlot).msgData(i)))
+    If strSize > 511 Then
+        strSize = 511
+    End If
     Call CopyMemory(temp(0), serverMessages(msgSlot).msgData(i), ByVal strSize)
     temp(strSize) = &H0
     msg = ByteArrayToString(temp)
